@@ -11,7 +11,7 @@ Usage of ./swarm-seed-list:
 This service spawns a web server that serves a seed list at `listen`.
 Requirements:
  - Access to Docker Daemon API (`/var/run/docker.sock` mounted)
- - Peer in all specified `network`s
+ - Attached to all specified `network`s
 
 ### Generating the seed list
 
