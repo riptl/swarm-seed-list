@@ -6,6 +6,8 @@ Usage of ./swarm-seed-list:
       --network string     Name of network to use (default "devnet")
       --refresh duration   Refresh interval (default 1m0s)
       --service strings    Names of services to expose (default [validator])
+
+  $LIST_PRIVATE_KEY        Hex-encoded Ed25519 private key for signing the list (optional)
 ```
 
 This service spawns a web server that serves a seed list at `listen`.

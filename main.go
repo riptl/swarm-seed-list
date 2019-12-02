@@ -36,11 +36,11 @@ func main() {
 	pflag.StringVar(&networkName, "network", "devnet", "Name of network to use")
 	pflag.DurationVar(&refreshInterval, "refresh", 1 * time.Minute, "Refresh interval")
 	pflag.StringVarP(&listen, "listen", "l", ":8080", "Listen port")
-	pk := os.Getenv("SEED_PRIVATE_KEY")
+	pk := os.Getenv("LIST_PRIVATE_KEY")
 	if pk != "" {
 		buf, err := hex.DecodeString(pk)
 		if err != nil || len(buf) != ed25519.SeedSize {
-			logrus.Fatal("Invalid $SEED_PRIVATE_KEY")
+			logrus.Fatal("Invalid $LIST_PRIVATE_KEY")
 		}
 		privateKey = ed25519.NewKeyFromSeed(buf)
 	}
@@ -143,7 +143,7 @@ func getURLs(ctx context.Context) (urls []string, err error) {
 			continue
 		}
 		// Parse network CIDR
-		ip, _, err := net.ParseCIDR("address")
+		ip, _, err := net.ParseCIDR(address)
 		if err != nil {
 			logrus.WithError(err).WithField("task", task.ID).
 				Error("Failed to parse CIDR")
@@ -160,7 +160,7 @@ func getURLs(ctx context.Context) (urls []string, err error) {
 				},
 			})
 			var publicKey string
-			if err := rpc.CallFor(&publicKey, "peer_public_key"); err != nil {
+			if err := rpc.CallFor(&publicKey, "peerPublicKey"); err != nil {
 				logrus.WithError(err).WithField("task", task.ID).
 					Error("Failed to request peer public key")
 			} else {
