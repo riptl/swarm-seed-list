@@ -1,5 +1,12 @@
 # Swarm Seed List Generator
 
+This service is intended to improve connectivity in a Nimiq network running on Docker Swarm.
+It spawns a web server that serves a seed list with links to other peers.
+Requirements:
+ - Access to Docker Daemon API (`/var/run/docker.sock` mounted)
+ - Attached to all specified `network`s
+ - Containers in service have open RPC servers at port `8648`
+
 ```
 Usage of ./swarm-seed-list:
   -l, --listen string      Listen port (default ":8080")
@@ -9,11 +16,6 @@ Usage of ./swarm-seed-list:
 
   $LIST_PRIVATE_KEY        Hex-encoded Ed25519 private key for signing the list (optional)
 ```
-
-This service spawns a web server that serves a seed list at `listen`.
-Requirements:
- - Access to Docker Daemon API (`/var/run/docker.sock` mounted)
- - Attached to all specified `network`s
 
 ### Generating the seed list
 
