@@ -10,7 +10,7 @@ require (
 	github.com/docker/go-units v0.4.0 // indirect
 	github.com/onsi/gomega v1.7.1 // indirect
 	github.com/opencontainers/go-digest v1.0.0-rc1 // indirect
-	github.com/sirupsen/logrus v1.5.0
+	github.com/sirupsen/logrus v1.6.0
 	github.com/spf13/pflag v1.0.5
 	github.com/ybbus/jsonrpc v2.1.2+incompatible
 	golang.org/x/net v0.0.0-20191126235420-ef20fe5d7933 // indirect
